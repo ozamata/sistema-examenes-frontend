@@ -1,4 +1,54 @@
-<div class="text-center">
-    <p>soy componente navbar</p>
+<mat-toolbar color="primary">
+    <a
+      [routerLink]="'/'"
+      mat-icon-button
+      class="example-icon"
+      arial-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </a>
+    <span>DISCAPACIDAD</span>
+    <!--las clase de de MATERIAL-->
+    <span class="example-spacer"></span>
+   
+    <a
+    *ngIf="!login.isLoggedIn()"      
+    [routerLink]="'/login'"
+    mat-icon-button
+    class = "example-icon favorite-icon ml10"
+    aria-label = "Example icon-button with heart icon"
+  >
+    Iniciar sesión
+  </a>
+  
+    <a
+    *ngIf = "!login.isLoggedIn()"
+      [routerLink]="'/signup'"
+      mat-icon-button
+      class="example-icon favorite-icon mr20 ml170"
+      aria-label="Example icon-button with heart icon"
+    >
+      Registrar
+    </a>
+  
 
-</div>
+    <a
+    *ngIf="login.isLoggedIn()"
+    (click)="logout()"
+    style="margin: right 50px;"
+    mat-icon-button
+    class="example-icon favorite-icon mr20 ml170"
+    aria-label="Example icon-button with heart icon"
+    >
+      Cerrar Sesion
+    </a>
+
+    <button 
+    *ngIf="login.isLoggedIn()"
+    mat-button
+    style="margin-right: 10px;"
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    {{login.getUser().username  }}
+  </button>
+  </mat-toolbar>
